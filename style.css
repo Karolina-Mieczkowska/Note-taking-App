@@ -1,3 +1,5 @@
+/* MAIN STRUCTURE */
+
 body {
     background: #DBDFFE;
     margin: 0;
@@ -17,45 +19,34 @@ header {
     z-index: 100;
 }
 
+footer {
+    background: #A50C43;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    text-align: center;
+    color: #FFF;
+    font-size: .75rem;
+}
+
+/* CONTAINERS */
+
 .logo{
     display: flex;
 }
 
-.logo__icon {
-    width: 3rem;
-    height: 3rem;
-    background-image: url(Pin\ Logo.svg);
-    background-size: contain;
-    /* fill: #FA3B80;
-    background: #FFF;
-    border-radius: 50%;
-    padding: .25rem; */
-}
-
-.btn__delete {
-    width: 3rem;
-    height: 3rem;
-    border: none;
-    background: #FFD466;
-    visibility: hidden;
-}
-
-.delete__icon {
-    width: 2.5rem;
-    height: 2.5rem;
-    background-image: url(delete_black_24dp.svg);
-    background-repeat: no-repeat;
-    background-size: contain;
-}
-
-.logo__title {
-    margin: .5rem 0;
-    padding-left: .75rem;
-    font-weight: 400;
-}
-
 .main__note-board {
     display: block;
+}
+
+.main__create-note {
+    background: #FFF;
+    position: absolute;
+    top: 0;
+    height: 100vh;
+    width: 100%;
+    overflow: scroll;
+    display: none;
 }
 
 .note__overflow {
@@ -69,59 +60,17 @@ header {
     grid-template-columns: 1fr 1fr;
     grid-auto-rows: 150px;
     grid-gap: 1rem;
-    /* grid-template-columns:repeat(auto-fill, minmax(300px , 1fr)); */
-    /* overflow-y: scroll; */
 }
+
+/* ELEMENTS */
 
 .note {
     background: #FFF;
-    /* max-width: 47%;
-    max-height: 30vh; */
-    /* height: fit-content; */
     -webkit-box-shadow: 4px 4px 15px 0px rgba(0,0,0,0.12); 
     box-shadow: 4px 4px 15px 0px rgba(0,0,0,0.12);
     padding: 0 .75rem;
     box-sizing: border-box;
     overflow: hidden;
-}
-
-.main__create-note {
-    background: #FFF;
-    position: absolute;
-    top: 0;
-    height: 100vh;
-    width: 100%;
-    /* width: 100%; */
-    /* display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center; */
-    overflow: scroll;
-    display: none;
-}
-
-.create__note {
-    margin-top: 20%;
-    width: 100%;
-    height: 60%;
-}
-
-.create__note--textarea {
-    /* margin-top: 15vh; */
-    margin: 0 auto;
-    /* border: none; */
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
-    width: 100%;
-    height: 100%;
-    font-size: 1.25rem;
-    color: #333;
-    padding: 1.5rem;
-}
-
-.create__note--textarea:focus {
-    /* outline: none; */
 }
 
 .bottom__app-bar {
@@ -132,6 +81,45 @@ header {
     width: 100%;
     text-align: center;
 }
+
+/* TEXT */
+
+.logo__title {
+    margin: .5rem 0;
+    padding-left: .75rem;
+    font-weight: 400;
+}
+
+.footer__paragraph {
+    margin: 8px;
+}
+
+/* FORM */
+
+.create__note {
+    margin-top: 20%;
+    width: 100%;
+    height: 60%;
+}
+
+.create__note--textarea {
+    margin: 0 auto;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+    font-size: 1.25rem;
+    color: #333;
+    padding: 1.5rem;
+    border: none;
+}
+
+.create__note--textarea:focus {
+    outline: none;
+}
+
+/* BUTTONS */
 
 .btn {
     border-radius: 50%;
@@ -146,23 +134,11 @@ header {
     color: #333;
 }
 
-.btn:focus {
-    transform: scale(0.95);
-}
-
 .btn__add {
     width: 20vh;
     height: 20vh;
     border: 2vh solid #DBDFFE;
     background: #43FFA5;
-}
-
-.add__icon {
-    width: 5rem;
-    height: 5rem;
-    background-image: url(add_black_24dp.svg);
-    background-repeat: no-repeat;
-    background-size: contain;
 }
 
 .btn__save {
@@ -172,27 +148,48 @@ header {
     background: #43FFA5;
 }
 
-.save__icon {
+.btn__delete {
+    width: 3rem;
+    height: 3rem;
+    border: none;
+    background: #FFD466;
+    visibility: hidden;
+}
+
+/* ICONS */
+
+.logo__icon {
+    width: 3rem;
+    height: 3rem;
+    background-image: url(img/Pin_Logo.svg);
+    background-size: contain;
+}
+
+.add__icon {
     width: 5rem;
     height: 5rem;
-    background-image: url(done_black_24dp.svg);
+    background-image: url(img/add_black_24dp.svg);
     background-repeat: no-repeat;
     background-size: contain;
 }
 
-footer {
-    background: #A50C43;
-    width: 100%;
-    position: absolute;
-    bottom: 0;
-    text-align: center;
-    color: #FFF;
-    font-size: .75rem;
+.save__icon {
+    width: 5rem;
+    height: 5rem;
+    background-image: url(img/done_black_24dp.svg);
+    background-repeat: no-repeat;
+    background-size: contain;
 }
 
-.footer__paragraph {
-    margin: 8px;
+.delete__icon {
+    width: 2.5rem;
+    height: 2.5rem;
+    background-image: url(img/delete_black_24dp.svg);
+    background-repeat: no-repeat;
+    background-size: contain;
 }
+
+/* MOBILE */
 
 @media only screen and (min-width: 576px) {
 
@@ -203,25 +200,6 @@ footer {
     
     .note__overflow {
         height: 80vh; 
-    }
-
-    .note {
-        /* max-width: 30%;
-        margin-right: 2rem; */
-    }
-
-    .note__board {
-        /* height: 80vh;
-        justify-content: space-between;
-        align-items: flex-start;
-        overflow-y: scroll;
-        width: 90%;
-        margin-left: auto;
-        margin-right: auto; */
-    }
-
-    .bottom__app-bar {
-        /* display: none; */
     }
 }
 
@@ -237,6 +215,11 @@ footer {
 }
 
 @media only screen and (min-width: 992px) {
+
+    .create__note {
+        margin-top: 7%;
+        height: 70%;
+    }
     
     .bottom__app-bar {
         height: 10%;
@@ -247,6 +230,11 @@ footer {
 
     .btn {
         top: -55%;
+    }
+
+    .btn:hover {
+        transform: scale(0.95);
+        cursor: pointer;
     }
 
     .btn__add {
@@ -270,10 +258,5 @@ footer {
     .main__create-note {
         width: 100%;
         overflow: hidden;
-    }
-
-    .create__note {
-        margin-top: 7%;
-        height: 70%;
     }
 }
