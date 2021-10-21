@@ -6,27 +6,30 @@ const mainCreateNote = document.querySelector('.main__create-note');
 const mainNoteBoard = document.querySelector('.main__note-board');
 const noteBoard = document.querySelector('.note__board');
 
-// const openNoeteArea = function() {
-//     mainCreateNote.style.display = 'block';
-// }
-
-// const closeNoteArea = function() {
-//     mainNoteBoard.style.display = 'block';
-// }
-
-// const openNoteBoard = function() {
-//     mainNoteBoard.style.display = 'none';
-// }
-
-// const closeNoteBoard = function() {
-//     mainNoteBoard.style.display = 'none';
-// }
 
 noteBoard.innerHTML = '';
 const notes = [];
 
 let noteEdited = false;
 let editedNoteIndex;
+
+const updateUI = function(allNotes) {
+
+    noteBoard.innerHTML = '';
+
+    const newNote = allNotes.map(function(note) {
+
+        return `
+                <div class="note">
+                    <p class="note__paragraph">${note}</p>
+                </div>
+            `
+    }).join('');
+
+    noteBoard.insertAdjacentHTML('beforeend', newNote);
+}
+
+// STEP THREE
 
 const editNote = function(index) {
     console.log(`Edit note nr ${index}`)
@@ -41,27 +44,26 @@ const editNote = function(index) {
     noteEdited = true;
 }
 
-const updateUI = function(content) {
-    const newNote = `
-            <div class="note">
-                <p class="note__paragraph">${content}</p>
-            </div>
-        `
-    noteBoard.insertAdjacentHTML('beforeend', newNote);
-}
+// STEP FOUR
 
 const pinEditedNote = function(editedContent) {
-    console.log(editedContent);
     notes[editedNoteIndex] = editedContent;
+    console.log(notes[editedNoteIndex]);
     
     // Delete edited note
 
     // Pin new note
 
     // update UI
-    notes = ['Ptak', 'Gąska', 'Lisek']
-    updateUI()
+    // notes = ['Ptak', 'Gąska', 'Lisek']
+    // updateUI(notes)
+
+    updateUI(notes);
+
+    noteEdited = false;
 }
+
+// STEP ONE
 
 let noteContent;
 
@@ -72,17 +74,22 @@ btnAdd.addEventListener('click', function() {
     mainCreateNote.style.display = 'block';
 })
 
+// STEP TWO
+
 btnSave.addEventListener('click', function(ev) {
     ev.preventDefault();
 
-    // Add note
+    // Save note
     noteContent = textArea.value;
-    notes.push(noteContent);
 
     // Pin note to the board
 
+    // updateUI(notes);
+
     if (!noteEdited) {
-        updateUI(noteContent);
+        // Add note
+        notes.push(noteContent);
+        updateUI(notes);
     } else {
         pinEditedNote(noteContent);
     }
