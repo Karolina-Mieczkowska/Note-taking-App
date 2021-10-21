@@ -5,6 +5,7 @@ const btnSave = document.querySelector('.btn__save');
 const mainCreateNote = document.querySelector('.main__create-note');
 const mainNoteBoard = document.querySelector('.main__note-board');
 const noteBoard = document.querySelector('.note__board');
+const btnDelete = document.querySelector('.btn__delete');
 
 
 noteBoard.innerHTML = '';
@@ -27,17 +28,28 @@ const updateUI = function(allNotes) {
     }).join('');
 
     noteBoard.insertAdjacentHTML('beforeend', newNote);
+
+    const pinnedNotes = document.querySelectorAll('.note');
+
+    pinnedNotes.forEach(function(pinnedNote, ind) {
+        pinnedNote.addEventListener('click', function() {
+            editNote(ind);
+            editedNoteIndex = ind;
+            console.log('click');
+        })
+    })
 }
 
 // STEP THREE
 
 const editNote = function(index) {
-    console.log(`Edit note nr ${index}`)
 
     // Close note board
     mainNoteBoard.style.display = 'none';
     // Open note area
     mainCreateNote.style.display = 'block';
+    // Show delete button
+    btnDelete.style.visibility = 'visible';
 
     textArea.value = notes[index]
 
@@ -72,6 +84,8 @@ btnAdd.addEventListener('click', function() {
     mainNoteBoard.style.display = 'none';
     // Open note area
     mainCreateNote.style.display = 'block';
+    // Show delete button
+    btnDelete.style.visibility = 'visible';
 })
 
 // STEP TWO
@@ -94,14 +108,15 @@ btnSave.addEventListener('click', function(ev) {
         pinEditedNote(noteContent);
     }
 
-    const pinnedNotes = document.querySelectorAll('.note');
+    // const pinnedNotes = document.querySelectorAll('.note');
 
-    pinnedNotes.forEach(function(pinnedNote, ind) {
-        pinnedNote.addEventListener('click', function() {
-            editNote(ind);
-            editedNoteIndex = ind;
-        })
-    })
+    // pinnedNotes.forEach(function(pinnedNote, ind) {
+    //     pinnedNote.addEventListener('click', function() {
+    //         editNote(ind);
+    //         editedNoteIndex = ind;
+    //         console.log('click');
+    //     })
+    // })
 
     // Clear text area
     textArea.value = '';
@@ -110,6 +125,30 @@ btnSave.addEventListener('click', function(ev) {
     mainCreateNote.style.display = 'none';
     // Open note board
     mainNoteBoard.style.display = 'block';
+    // Hide delete button
+    btnDelete.style.visibility = 'hidden';
+})
+
+btnDelete.addEventListener('click', function() {
+
+    if (!noteEdited) {
+        // Close note area
+        mainCreateNote.style.display = 'none';
+        // Open note board
+        mainNoteBoard.style.display = 'block';
+        // Hide delete button
+        btnDelete.style.visibility = 'hidden';
+    } else {
+        notes.splice(editedNoteIndex, 1);
+        updateUI(notes);
+        noteEdited = false;
+        // Close note area
+        mainCreateNote.style.display = 'none';
+        // Open note board
+        mainNoteBoard.style.display = 'block';
+        // Hide delete button
+        btnDelete.style.visibility = 'hidden';
+    }
 })
 
 footerDate.textContent = new Date().getFullYear();
