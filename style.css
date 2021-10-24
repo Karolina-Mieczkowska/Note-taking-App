@@ -77,6 +77,10 @@ footer {
     overflow: hidden;
 }
 
+.note:hover {
+    cursor: pointer;
+}
+
 .bottom__app-bar {
     background: #FA3B80;
     position: absolute;
@@ -159,6 +163,17 @@ footer {
     border: none;
     background: #FFD466;
     visibility: hidden;
+    top: 0;
+}
+
+.btn__cancel {
+    width: 3rem;
+    height: 3rem;
+    border: none;
+    background: #FFD466;
+    visibility: hidden;
+    top: 0;
+    margin-right: .25rem;
 }
 
 /* ICONS */
@@ -190,6 +205,14 @@ footer {
     width: 2.5rem;
     height: 2.5rem;
     background-image: url(img/delete_black_24dp.svg);
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+.cancel__icon {
+    width: 2.5rem;
+    height: 2.5rem;
+    background-image: url(img/x.svg);
     background-repeat: no-repeat;
     background-size: contain;
 }
@@ -252,6 +275,15 @@ footer {
         width: 10vh;
         height: 10vh;
         border: 1vh solid #FFF;
+    }
+
+    .btn__delete,
+    .btn__cancel {
+        top: 0;
+    }
+
+    .btn__cancel {
+        margin-right: .5rem;
     }
     
     .add__icon,
