@@ -1,5 +1,6 @@
 const textArea = document.querySelector('.create__note--textarea');
 const noteBoard = document.querySelector('.note__board');
+const noteAppBar = document.querySelector('.bottom__app-bar--note');
 
 const mainCreateNote = document.querySelector('.main__create-note');
 const mainNoteBoard = document.querySelector('.main__note-board');
@@ -13,6 +14,18 @@ const footerDate = document.querySelector('.footer__date');
 
 noteBoard.innerHTML = '';
 const notes = [];
+
+// MOBILE KEYBOARD
+
+if (screen.width < 768) {
+    textArea.addEventListener('focusin', function() {
+        noteAppBar.style.display = 'none';
+    }) 
+
+    textArea.addEventListener('focusout', function() {
+        noteAppBar.style.display = 'block';
+    }) 
+} 
 
 let noteEdited = false;
 let editedNoteIndex;
@@ -132,3 +145,4 @@ btnCancel.addEventListener('click', function() {
 })
 
 footerDate.textContent = new Date().getFullYear();
+
