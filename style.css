@@ -217,6 +217,20 @@ footer {
     background-size: contain;
 }
 
+/* MOBILE KEYBOARD */
+
+@media screen and (orientation: landscape) {
+    .bottom__app-bar--note {
+        display: none;
+    }
+  }
+
+@media screen and (orientation: portrait) {
+    .bottom__app-bar--note {
+        display: block;
+    }
+}
+
 /* MOBILE */
 
 @media only screen and (min-width: 576px) {

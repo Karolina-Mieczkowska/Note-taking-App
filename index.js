@@ -17,15 +17,11 @@ const notes = [];
 
 // MOBILE KEYBOARD
 
-if (screen.width < 768) {
-    textArea.addEventListener('focusin', function() {
-        noteAppBar.style.display = 'none';
-    }) 
-
-    textArea.addEventListener('focusout', function() {
+if (screen.width > 992) {
+    textArea.addEventListener('focus', function() {
         noteAppBar.style.display = 'block';
-    }) 
-} 
+    })
+}
 
 let noteEdited = false;
 let editedNoteIndex;
